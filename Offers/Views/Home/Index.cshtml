@@ -1,8 +1,46 @@
-﻿@{
+﻿@model Offers.BLL.DTO.OfferDTO
+@{
+    var title = Model.OfferAttribute.FirstOrDefault(a => a.Name == "title" || a.Name == "name")?.Value;
     ViewData["Title"] = "Home Page";
 }
+<div class="offer p-4">
+    <div class="offer-content">
+        <div class="offer-top m-3">
+            <div class="offer-category mb-3">
+                <span class="offer-category__span">@Model.Category</span>
+            </div>
+            <div class="offer-title">
+                <h1 class="offer-title__text">@title</h1>
+            </div>
+        </div>
+        <div class="offer-content-items row justify-content-between">
+            <div class="offer-content-left col-lg-7">
+                <div class="offer-body">
+                    <div class="offer-picture">
+                        <img class="w-100" />
+                    </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+                </div>
+            </div>
+            <div class="offer-content-right col-lg-5">
+                @foreach (var offerAttribute in Model.OfferAttribute)
+                {
+                    <div class="offer-atribute d-flex flex-wrap justify-content-between">
+                        <label class="offer-atribute__label p-1">@offerAttribute.Name</label>
+                        <span class="offer-atribute__value p-1">@offerAttribute.Value</span>
+                    </div>
+                }
+                <div class="offer-content-price mt-3">
+                    <div class="offer-price-content">
+                        <button class="offer-price-content__price btn-lg btn-outline-success">@Model.Price Р </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="offer-description mt-3">
+            <p>@Model.Description</p>
+        </div>
+    </div>
 </div>

@@ -1,18 +1,26 @@
-html {
-  font-size: 14px;
+.offer-picture {
+    height: 400px;
+    background-color: grey;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.offer-category__span {
+    color: #005bff;
+    cursor: pointer;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.offer-atribute {
+    border-bottom: dashed 2px;
 }
 
-body {
-  margin-bottom: 60px;
+.offer-atribute__label {
+    color: gray;
+    font-size: 20px;
+}
+
+.offer-atribute__value {
+    font-size: 20px;
+}
+
+.offer-price-content__price {
+    font-size: 26px;
 }

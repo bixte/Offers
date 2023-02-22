@@ -1,6 +1,9 @@
+using Offers.BLL.Infrastructure;
+
 var builder = WebApplication.CreateBuilder();
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddAppServices(builder.Configuration.GetConnectionString("default"));
 
 var app = builder.Build();
 
@@ -17,8 +20,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllers();
+app.MapFallbackToController("index", "Home");
 
 app.Run();
