@@ -37,13 +37,13 @@ namespace Offers.DAL.Implementations.EF
             offersEF.Set<T>().Remove(entity);
         }
 
-        public T? Find(int id)
+        virtual public T? Find(int id)
         {
             var entity = offersEF.Set<T>().Find(id);
             return entity;
         }
 
-        public async Task<T?> FindAsync(int id)
+        virtual public async Task<T?> FindAsync(int id)
         {
             var entity = await offersEF.Set<T>().FindAsync(id);
             return entity;
@@ -56,7 +56,7 @@ namespace Offers.DAL.Implementations.EF
 
         public IEnumerable<T> GetAll(Func<T, bool> predicate)
         {
-           return offersEF.Set<T>().Where(predicate);
+            return offersEF.Set<T>().Where(predicate);
         }
         public void Update(T entity)
         {
